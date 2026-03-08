@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+console.log("Configured API URL:", API_URL);
 
 function App() {
   const [user, setUser] = useState(null);

@@ -1,3 +1,12 @@
 playwright
 google-api-python-client
 google-auth
+google-auth-oauthlib
+google-auth-httplib2
+fastapi
+uvicorn
+sqlalchemy
+asyncpg
+stripe
+python-multipart
+requests

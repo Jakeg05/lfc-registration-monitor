@@ -2,19 +2,21 @@ import os
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.db.session import get_db, User
+from app.db.session import get_db
+from app.db.models import User
+from app.core.config import settings
 from google_auth_oauthlib.flow import Flow
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
 router = APIRouter()
 
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "")
-GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET", "")
+GOOGLE_CLIENT_ID = settings.GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET = settings.GOOGLE_CLIENT_SECRET
 SCOPES = ["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/calendar.events"]
 
 # In prod this should match your registered redirect URI exactly
-REDIRECT_URI = "http://localhost:5173/auth/callback" 
+REDIRECT_URI = settings.REDIRECT_URI
 
 @router.get("/login")
 def login():

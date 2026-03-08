@@ -9,7 +9,7 @@ from app.db.models import User, Event
 
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-import os
+from app.core.config import settings
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -23,8 +23,8 @@ def add_calendar_event(user_email: str, refresh_token: str, title: str, start_ti
     """
     try:
         # Load client config from env
-        client_id = os.getenv("GOOGLE_CLIENT_ID")
-        client_secret = os.getenv("GOOGLE_CLIENT_SECRET")
+        client_id = settings.GOOGLE_CLIENT_ID
+        client_secret = settings.GOOGLE_CLIENT_SECRET
         
         if not client_id or not client_secret:
             logger.error(f"Missing Google Client ID/Secret for user {user_email}")

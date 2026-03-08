@@ -1,6 +1,6 @@
 # Use an official Python runtime with Playwright pre-installed if available, 
 # or install it manually. The official Playwright image is large but reliable.
-FROM mcr.microsoft.com/playwright/python:v1.49.0-jammy
+FROM mcr.microsoft.com/playwright/python:v1.58.0-jammy
 
 WORKDIR /app
 
